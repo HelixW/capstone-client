@@ -1,1 +1,26 @@
-<p>register works!</p>
+<nav class="navbar">
+  <img
+    [routerLink]="'/'"
+    class="navbar__logo"
+    src="../../assets/logo.png"
+    alt="Logo"
+  />
+</nav>
+<section class="lgn">
+  <article class="lgn__card">
+    <div class="lgn__card__head">Register</div>
+    <div class="lgn__card__text">First Name</div>
+    <input class="lgn__card__inp" type="text" />
+    <div class="lgn__card__text">Last Name</div>
+    <input class="lgn__card__inp" type="text" />
+    <div class="lgn__card__text">Email Address</div>
+    <input class="lgn__card__inp" type="email" />
+    <div class="lgn__card__text">Password</div>
+    <input class="lgn__card__inp" type="password" />
+    <button class="lgn__card__btn">Register</button>
+    <div class="lgn__card__stext">
+      Already have an account?
+      <span [routerLink]="'/login'" class="lgn__card__stext__link">Login</span>
+    </div>
+  </article>
+</section>

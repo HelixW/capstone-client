@@ -12,26 +12,30 @@
 
 .lgn {
   &__card {
-    @apply flex flex-col justify-center items-center mt-16 lg:shadow-lg mx-auto lg:w-96 lg:py-16 lg:mt-32 lg:rounded-lg lg:bg-white;
+    @apply flex flex-col justify-center items-center mt-6 lg:shadow-lg mx-auto lg:w-96 lg:py-12 lg:mt-20 lg:rounded-lg lg:bg-white;
 
     &__head {
-      @apply font-bold text-2xl w-56 text-left mb-6;
+      @apply font-bold text-2xl w-64 text-left mb-6;
     }
 
     &__text {
-      @apply w-56 text-left;
+      @apply w-64 text-left;
     }
 
     &__inp {
-      @apply border-2 border-blue-400 rounded-lg w-56 py-2 px-3 mb-4;
+      @apply border-2 border-blue-400 rounded-lg w-64 py-2 px-3 mb-4;
     }
 
     &__btn {
-      @apply mb-2 mx-auto w-56 lg:mx-0 lg:w-56 mt-4 font-bold rounded-lg border-black border-2 py-2 uppercase bg-black text-white hover:text-black hover:bg-white transition duration-200 text-xl;
+      @apply mb-2 mx-auto w-64 lg:mx-0 lg:w-64 mt-4 font-bold rounded-lg border-black border-2 py-2 uppercase bg-black text-white hover:text-black hover:bg-white transition duration-200 text-xl;
     }
 
-    &__link {
-      @apply text-blue-500 cursor-pointer hover:underline;
+    &__stext {
+      @apply w-64;
+
+      &__link {
+        @apply text-blue-500 cursor-pointer hover:underline;
+      }
     }
   }
 }
