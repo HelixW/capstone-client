@@ -31,7 +31,7 @@
 }
 
 .upl {
-  @apply bg-white mx-4 py-4 rounded-lg flex flex-col justify-center items-center border-2 border-dashed border-gray-500 lg:w-3/4 lg:mx-auto lg:shadow-lg lg:mt-8 lg:py-12;
+  @apply relative bg-white mx-4 py-4 rounded-lg flex flex-col justify-center items-center border-2 border-dashed border-gray-500 lg:w-3/4 lg:mx-auto lg:shadow-lg lg:mt-8 lg:py-12;
 
   &__head {
     @apply uppercase font-bold lg:text-2xl;
@@ -42,7 +42,7 @@
   }
 
   &__text {
-    @apply mb-4 lg:text-xl;
+    @apply mb-4 lg:text-xl z-10;
 
     &__link {
       @apply text-blue-500 hover:underline cursor-pointer;
@@ -53,12 +53,16 @@
     @apply text-gray-400 font-bold;
   }
 
-  &__name {
-    @apply text-xl text-center mb-2;
-  }
+  &__file {
+    @apply z-10;
 
-  &__btn {
-    @apply bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
+    &__name {
+      @apply text-xl text-center mb-2;
+    }
+
+    &__btn {
+      @apply bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
+    }
   }
 }
 
@@ -82,6 +86,11 @@
   }
 }
 
-input[type="file"] {
-  display: none;
+#link {
+  @apply hidden;
+}
+
+#drop {
+  @apply bg-black absolute w-full h-80 opacity-0 z-0;
+  top: 0;
 }

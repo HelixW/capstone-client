@@ -13,6 +13,7 @@ export class DashboardComponent {
 
   file: File | undefined;
   fileName = '';
+  fileDrag: boolean = false;
 
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
@@ -27,6 +28,14 @@ export class DashboardComponent {
   getFile(event: any) {
     this.file = event.target.files[0];
     if (this.file) this.fileName = this.file.name;
-    console.log(this.file);
+    this.fileDrag = false;
+  }
+
+  onDragOver() {
+    this.fileDrag = true;
+  }
+
+  onDragLeave() {
+    this.fileDrag = false;
   }
 }

@@ -11,10 +11,22 @@
     />
     <button class="header__search__btn">Search</button>
   </article>
-  <article class="upl">
+  <article
+    class="upl"
+    [ngClass]="{ 'opacity-50': fileDrag }"
+    (dragenter)="onDragOver()"
+    (dragleave)="onDragLeave()"
+  >
+    <input
+      type="file"
+      (input)="getFile($event)"
+      [accept]="'.txt'"
+      id="drop"
+      #fileUpload
+    />
     <h3 class="upl__head">Upload your file</h3>
     <img class="upl__icon" src="../../assets/upload.png" alt="Upload" />
-    <span class="upl__text">
+    <span class="upl__text" [hidden]="fileName">
       Drag & Drop or
       <label class="upl__text__link">
         <input
@@ -22,17 +34,22 @@
           (input)="getFile($event)"
           [accept]="'.txt'"
           #fileUpload
+          id="link"
         />
         File/Folder
       </label>
       to Upload.
     </span>
-    <div [hidden]="!fileName">
-      <div class="upl__name">{{ fileName || "No file uploaded yet" }}</div>
-      <button class="upl__btn">Upload to IPFS</button>
-      <button class="upl__btn" (click)="removeFile()">Remove File</button>
+    <div [hidden]="!fileName" class="upl__file">
+      <div class="upl__file__name">
+        {{ fileName || "No file uploaded yet" }}
+      </div>
+      <button class="upl__file__btn">Upload to IPFS</button>
+      <button class="upl__file__btn" (click)="removeFile()">Remove File</button>
     </div>
-    <span for="fileDropRef" class="upl__subtext"> TXT or FOLDER </span>
+    <span for="fileDropRef" class="upl__subtext" [hidden]="fileName">
+      TXT or FOLDER
+    </span>
   </article>
 </header>
 
