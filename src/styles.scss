@@ -4,6 +4,14 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
+html,
+body {
+  @apply h-full w-full m-0 p-0;
+}
 body {
   font-family: "Lato", sans-serif;
+}
+
+app-root {
+  @apply block h-full w-full m-0 p-0;
 }
