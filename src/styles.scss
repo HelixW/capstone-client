@@ -6,7 +6,7 @@
 
 html,
 body {
-  @apply h-full w-full m-0 p-0;
+  @apply h-full w-full m-0 p-0 overflow-auto;
 }
 body {
   font-family: "Lato", sans-serif;

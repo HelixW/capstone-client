@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <img class="navbar__logo" src="../../assets/logo.png" alt="Logo" />
+  <button [routerLink]="'/'" class="navbar__btn">Logout</button>
+</nav>
+<header class="header">
+  <article class="header__search">
+    <input
+      type="text"
+      class="header__search__bar"
+      placeholder="Enter hash of file or folder"
+    />
+    <button class="header__search__btn">Search</button>
+  </article>
+  <article class="upl">
+    <h3 class="upl__head">Upload your file</h3>
+    <img class="upl__icon" src="../../assets/upload.png" alt="Upload" />
+    <span class="upl__text">
+      Drag & Drop or <span class="upl__text__link">Choose File/Folder</span> to
+      Upload.
+    </span>
+    <span for="fileDropRef" class="upl__subtext">TXT or FOLDER</span>
+  </article>
+</header>
+
+<footer class="f">
+  <article class="f__text">
+    <span class="f__text__head">Browse:</span> To look for a file or folder,
+    enter a hash in the search bar.
+  </article>
+  <div class="f__vl"></div>
+  <article class="f__text">
+    <span class="f__text__head">Upload:</span> To upload a new file to the IPFS,
+    drag and drop a file or folder into the upload section above.
+  </article>
+  <button [routerLink]="'/'" class="f__btn">Logout</button>
+</footer>
