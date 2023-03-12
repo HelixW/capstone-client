@@ -15,10 +15,24 @@
     <h3 class="upl__head">Upload your file</h3>
     <img class="upl__icon" src="../../assets/upload.png" alt="Upload" />
     <span class="upl__text">
-      Drag & Drop or <span class="upl__text__link">Choose File/Folder</span> to
-      Upload.
+      Drag & Drop or
+      <label class="upl__text__link">
+        <input
+          type="file"
+          (input)="getFile($event)"
+          [accept]="'.txt'"
+          #fileUpload
+        />
+        File/Folder
+      </label>
+      to Upload.
     </span>
-    <span for="fileDropRef" class="upl__subtext">TXT or FOLDER</span>
+    <div [hidden]="!fileName">
+      <div class="upl__name">{{ fileName || "No file uploaded yet" }}</div>
+      <button class="upl__btn">Upload to IPFS</button>
+      <button class="upl__btn" (click)="removeFile()">Remove File</button>
+    </div>
+    <span for="fileDropRef" class="upl__subtext"> TXT or FOLDER </span>
   </article>
 </header>
 

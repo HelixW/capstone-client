@@ -52,6 +52,14 @@
   &__subtext {
     @apply text-gray-400 font-bold;
   }
+
+  &__name {
+    @apply text-xl text-center mb-2;
+  }
+
+  &__btn {
+    @apply bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
+  }
 }
 
 .f {
@@ -72,4 +80,8 @@
   &__btn {
     @apply mx-4 mb-2 box-border lg:mx-0 mt-4 font-bold rounded-lg border-black border-2 py-2 uppercase bg-black text-white hover:text-black hover:bg-white transition duration-200 text-xl lg:hidden;
   }
+}
+
+input[type="file"] {
+  display: none;
 }
