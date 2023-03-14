@@ -7,11 +7,17 @@ import { Injectable } from '@angular/core';
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  private url = 'http://localhost:3000';
+
   saveUser(data: any) {
-    return this.http.post(`http://localhost:3000/identity/register`, data);
+    return this.http.post(`${this.url}/identity/register`, data);
+  }
+
+  loginUser(data: any) {
+    return this.http.post(`${this.url}/identity/login`, data);
   }
 
   validateUser(header: any) {
-    return this.http.get(`http://localhost:3000/identity/validate`, header);
+    return this.http.get(`${this.url}/identity/validate`, header);
   }
 }

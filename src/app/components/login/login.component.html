@@ -7,18 +7,36 @@
   />
 </nav>
 <section class="lgn">
-  <article class="lgn__card">
+  <form
+    class="lgn__card"
+    ngNativeValidate
+    #loginForm="ngForm"
+    (submit)="login(loginForm.value)"
+  >
     <div class="lgn__card__head">Login</div>
+    <div
+      class="lgn__card__msg"
+      [ngClass]="{ 'lgn__card__msg--error': !success }"
+      [hidden]="!submitted"
+    >
+      Invalid email or password.
+    </div>
     <div class="lgn__card__text">Email Address</div>
-    <input class="lgn__card__inp" type="email" />
+    <input class="lgn__card__inp" type="email" ngModel name="email" required />
     <div class="lgn__card__text">Password</div>
-    <input class="lgn__card__inp" type="password" />
-    <button [routerLink]="'/app'" class="lgn__card__btn">Login</button>
+    <input
+      class="lgn__card__inp"
+      type="password"
+      ngModel
+      name="password"
+      required
+    />
+    <button class="lgn__card__btn" type="submit">Login</button>
     <div class="lgn__card__stext">
       Don't have an account?
       <span [routerLink]="'/register'" class="lgn__card__stext__link">
         Register
       </span>
     </div>
-  </article>
+  </form>
 </section>
