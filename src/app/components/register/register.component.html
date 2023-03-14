@@ -1,0 +1,64 @@
+<nav class="navbar">
+  <img
+    [routerLink]="'/'"
+    class="navbar__logo"
+    src="../../assets/logo.png"
+    alt="Logo"
+  />
+</nav>
+<section class="lgn">
+  <form
+    class="lgn__card"
+    ngNativeValidate
+    #registerForm="ngForm"
+    (submit)="register(registerForm.value)"
+  >
+    <h2 class="lgn__card__head">Register</h2>
+    <div
+      class="lgn__card__msg"
+      [ngClass]="{ 'lgn__card__msg--success': success }"
+      [hidden]="!submitted || !success"
+    >
+      User has been registered successfully, you may now visit your
+      <span class="lgn__card__msg__link">dashboard</span>.
+    </div>
+    <div
+      class="lgn__card__msg"
+      [ngClass]="{ 'lgn__card__msg--error': !success }"
+      [hidden]="!submitted || success"
+    >
+      User with the given email already exists.
+    </div>
+    <label class="lgn__card__text">First Name</label>
+    <input
+      class="lgn__card__inp"
+      type="text"
+      ngModel
+      name="firstName"
+      required
+    />
+    <label class="lgn__card__text">Last Name</label>
+    <input
+      class="lgn__card__inp"
+      type="text"
+      ngModel
+      name="lastName"
+      required
+    />
+    <label class="lgn__card__text">Email Address</label>
+    <input class="lgn__card__inp" type="email" ngModel name="email" required />
+    <label class="lgn__card__text">Password</label>
+    <input
+      class="lgn__card__inp"
+      type="password"
+      ngModel
+      name="password"
+      required
+    />
+    <button class="lgn__card__btn" type="submit">Register</button>
+    <div class="lgn__card__stext">
+      Already have an account?
+      <span [routerLink]="'/login'" class="lgn__card__stext__link">Login</span>
+    </div>
+  </form>
+</section>
