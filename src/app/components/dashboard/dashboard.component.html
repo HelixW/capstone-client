@@ -1,6 +1,13 @@
 <nav class="navbar">
   <img class="navbar__logo" src="../../assets/logo.png" alt="Logo" />
-  <button [routerLink]="'/'" class="navbar__btn">Logout</button>
+  <button
+    [routerLink]="'/'"
+    class="navbar__btn"
+    type="button"
+    (click)="logout()"
+  >
+    Logout
+  </button>
 </nav>
 <header class="header">
   <article class="header__search">

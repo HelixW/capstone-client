@@ -57,4 +57,9 @@ export class DashboardComponent {
   onDragLeave() {
     this.fileDrag = false;
   }
+
+  logout() {
+    localStorage.removeItem('tk');
+    this.router.navigateByUrl('');
+  }
 }
