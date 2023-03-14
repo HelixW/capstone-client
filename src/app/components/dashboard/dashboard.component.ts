@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,11 +9,28 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  title = 'Dashboard';
+  constructor(private user: UserService, private router: Router) {}
 
-  constructor(private http: HttpClient) {}
+  ngOnInit() {
+    const bearerToken = localStorage.getItem('tk');
 
-  file: File | undefined;
+    // Check validity of token
+    if (bearerToken) {
+      var header = {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${bearerToken}`
+        ),
+      };
+
+      this.user.validateUser(header).subscribe({
+        next: () => console.log('User validated.'),
+        error: () => this.router.navigateByUrl(''),
+      });
+    } else this.router.navigateByUrl('');
+  }
+
+  private file: File | undefined;
   fileName = '';
   fileDrag: boolean = false;
 

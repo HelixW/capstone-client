@@ -10,4 +10,8 @@ export class UserService {
   saveUser(data: any) {
     return this.http.post(`http://localhost:3000/identity/register`, data);
   }
+
+  validateUser(header: any) {
+    return this.http.get(`http://localhost:3000/identity/validate`, header);
+  }
 }
