@@ -42,8 +42,11 @@ export class DashboardComponent {
   textFile = false;
   pngFile = false;
 
+  uploadComplete = false;
   successUpload = false;
+  failureUpload = false;
   successHash = '';
+  uploadMessage = '';
 
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
@@ -91,14 +94,24 @@ export class DashboardComponent {
       next: (res: any) => {
         this.successHash = res.hash;
         this.successUpload = true;
+        this.uploadMessage = 'File successfully uploaded to the network!';
       },
-      error: (err) => console.log(err.error),
+      error: (err) => {
+        {
+          console.log(err.error);
+          this.failureUpload = true;
+          this.uploadMessage = 'Identical file already exists in network!';
+        }
+      },
     });
   }
 
   restart() {
-    this.successHash = '';
+    this.uploadComplete = false;
     this.successUpload = false;
+    this.failureUpload = false;
+    this.successHash = '';
+    this.uploadMessage = '';
   }
 
   logout() {

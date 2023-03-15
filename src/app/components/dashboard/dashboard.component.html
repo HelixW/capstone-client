@@ -18,14 +18,20 @@
     />
     <button class="header__search__btn">Search</button>
   </article>
-  <div [hidden]="!successUpload">
+  <div [hidden]="!uploadComplete || !successUpload">
     <div class="upl">
-      <h1 class="upl__h1">File successfully uploaded to the network!</h1>
+      <h1 class="upl__h1">{{ uploadMessage }}</h1>
       <h3 class="upl__h3">Your file has the hash: {{ successHash }}</h3>
       <button class="upl__btn" type="button" (click)="restart()">Clear</button>
     </div>
   </div>
-  <div [hidden]="successUpload">
+  <div [hidden]="!uploadComplete || !failureUpload">
+    <div class="upl">
+      <h1 class="upl__h1--fail">{{ uploadMessage }}</h1>
+      <button class="upl__btn" type="button" (click)="restart()">Clear</button>
+    </div>
+  </div>
+  <div [hidden]="uploadComplete">
     <form
       class="upl"
       [ngClass]="{ 'opacity-50': fileDrag }"
