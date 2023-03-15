@@ -59,7 +59,6 @@ export class DashboardComponent {
 
     this.fileDrag = false;
 
-    console.log(this.fileType);
     // Set file type
     if (this.fileType === 'text/plain') this.textFile = true;
     else if (this.fileType === 'image/png') this.pngFile = true;
@@ -71,6 +70,11 @@ export class DashboardComponent {
 
   onDragLeave() {
     this.fileDrag = false;
+  }
+
+  onSubmit(data: any) {
+    data.file = this.file;
+    console.log(data);
   }
 
   logout() {

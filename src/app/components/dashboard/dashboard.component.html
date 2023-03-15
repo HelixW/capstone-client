@@ -18,17 +18,21 @@
     />
     <button class="header__search__btn">Search</button>
   </article>
-  <article
+  <form
     class="upl"
     [ngClass]="{ 'opacity-50': fileDrag }"
     (dragenter)="onDragOver()"
     (dragleave)="onDragLeave()"
+    ngNativeValidate
+    #fileUploadForm="ngForm"
+    (submit)="onSubmit(fileUploadForm.value)"
   >
     <input
       type="file"
       (input)="getFile($event)"
       [accept]="'.txt,.png'"
       id="drop"
+      [hidden]="fileName"
       #fileUpload
     />
     <h3 class="upl__head">Upload your file</h3>
@@ -68,13 +72,30 @@
       <div class="upl__file__name">
         {{ fileName || "No file uploaded yet" }}
       </div>
-      <button class="upl__file__btn">Upload to IPFS</button>
-      <button class="upl__file__btn" (click)="removeFile()">Remove File</button>
+      <div class="upl__file__btngrp">
+        <button
+          class="upl__file__btngrp__btn"
+          (click)="removeFile()"
+          type="button"
+        >
+          Remove File
+        </button>
+        <div class="upl__file__btngrp__select">
+          <span>Choose Access Level: </span>
+          <select name="access" ngModel required>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+        <button class="upl__file__btngrp__btn" type="submit">
+          Upload to IPFS
+        </button>
+      </div>
     </div>
     <span for="fileDropRef" class="upl__subtext" [hidden]="fileName">
       TXT, PNG
     </span>
-  </article>
+  </form>
 </header>
 
 <footer class="f">
