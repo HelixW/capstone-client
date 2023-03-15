@@ -49,6 +49,12 @@ export class DashboardComponent {
   successHash = '';
   uploadMessage = '';
 
+  fetchComplete = false;
+  successFetch = false;
+  failureFetch = false;
+  fetchMessage = '';
+  fetchContent = '';
+
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
 
@@ -111,10 +117,18 @@ export class DashboardComponent {
 
   onFetch(data: NgForm) {
     this.ipfs.fetchFile(data).subscribe({
-      next: () => {
-        console.log('Success');
+      next: (res: any) => {
+        this.fetchComplete = true;
+        this.successFetch = true;
+        this.fetchMessage = 'Your file has been fetched successfully.';
+        this.fetchContent = res.data;
       },
-      error: (err) => console.log(err.error),
+      error: (err) => {
+        this.fetchComplete = true;
+        this.failureFetch = true;
+        this.fetchMessage = 'Your file could not be fetched.';
+        console.log(err.error);
+      },
     });
   }
 
@@ -124,6 +138,12 @@ export class DashboardComponent {
     this.failureUpload = false;
     this.successHash = '';
     this.uploadMessage = '';
+
+    this.fetchComplete = false;
+    this.successFetch = false;
+    this.failureFetch = false;
+    this.fetchMessage = '';
+    this.fetchContent = '';
   }
 
   logout() {

@@ -45,6 +45,10 @@
     @apply font-bold text-lg;
   }
 
+  &__cont {
+    @apply bg-gray-100 w-96 p-4 rounded-lg;
+  }
+
   &__btn {
     @apply mt-4 bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
   }

@@ -9,8 +9,8 @@
     Logout
   </button>
 </nav>
+
 <header class="header">
-  <!-- TODO -->
   <form
     class="header__search"
     ngNativeValidate
@@ -27,6 +27,33 @@
     />
     <button class="header__search__btn" type="submit">Search</button>
   </form>
+
+  <div [hidden]="!fetchComplete || !successFetch">
+    <div class="upl">
+      <h1 class="upl__h1">
+        {{ fetchMessage }}
+      </h1>
+      <h3 class="upl__h3">File Contents</h3>
+      <div class="upl__cont">
+        {{ fetchContent }}
+      </div>
+      <button class="upl__btn" type="button" (click)="restart()">Clear</button>
+    </div>
+  </div>
+
+  <div [hidden]="!fetchComplete || !failureFetch">
+    <div class="upl">
+      <h1 class="upl__h1--fail">
+        {{ fetchMessage }}Your file could not be fetched
+      </h1>
+      <h3 class="upl__h3">
+        You are either unauthorised to view the file or the hash provided is
+        incorrect.
+      </h3>
+      <button class="upl__btn" type="button" (click)="restart()">Clear</button>
+    </div>
+  </div>
+
   <div [hidden]="!uploadComplete || !successUpload">
     <div class="upl">
       <h1 class="upl__h1">{{ uploadMessage }}</h1>
@@ -34,13 +61,15 @@
       <button class="upl__btn" type="button" (click)="restart()">Clear</button>
     </div>
   </div>
+
   <div [hidden]="!uploadComplete || !failureUpload">
     <div class="upl">
       <h1 class="upl__h1--fail">{{ uploadMessage }}</h1>
       <button class="upl__btn" type="button" (click)="restart()">Clear</button>
     </div>
   </div>
-  <div [hidden]="uploadComplete">
+
+  <div [hidden]="uploadComplete || fetchComplete">
     <form
       class="upl"
       [ngClass]="{ 'opacity-50': fileDrag }"
