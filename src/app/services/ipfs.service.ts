@@ -15,7 +15,7 @@ export class IpfsService {
     var header = {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
-        .set('alevel', data.access),
+        .append('alevel', data.access),
     };
     return this.http.post(`${this.url}/ipfs/upload`, formData, header);
   }
