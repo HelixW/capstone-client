@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { UserService } from 'src/app/services/user.service';
@@ -105,6 +106,15 @@ export class DashboardComponent {
           this.uploadMessage = 'Identical file already exists in network!';
         }
       },
+    });
+  }
+
+  onFetch(data: NgForm) {
+    this.ipfs.fetchFile(data).subscribe({
+      next: () => {
+        console.log('Success');
+      },
+      error: (err) => console.log(err.error),
     });
   }
 

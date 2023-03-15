@@ -19,4 +19,14 @@ export class IpfsService {
     };
     return this.http.post(`${this.url}/ipfs/upload`, formData, header);
   }
+
+  fetchFile(data: any) {
+    const bearerToken = localStorage.getItem('tk');
+
+    var header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`),
+    };
+
+    return this.http.post(`${this.url}/ipfs/fetch`, data, header);
+  }
 }

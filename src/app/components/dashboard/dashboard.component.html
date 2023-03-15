@@ -10,14 +10,22 @@
   </button>
 </nav>
 <header class="header">
-  <article class="header__search">
+  <!-- TODO -->
+  <form
+    class="header__search"
+    ngNativeValidate
+    #fetchForm="ngForm"
+    (submit)="onFetch(fetchForm.value)"
+  >
     <input
       type="text"
       class="header__search__bar"
       placeholder="Enter hash of file or folder"
+      name="hash"
+      required
     />
-    <button class="header__search__btn">Search</button>
-  </article>
+    <button class="header__search__btn" type="submit">Search</button>
+  </form>
   <div [hidden]="!uploadComplete || !successUpload">
     <div class="upl">
       <h1 class="upl__h1">{{ uploadMessage }}</h1>
