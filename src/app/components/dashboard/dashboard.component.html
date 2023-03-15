@@ -27,19 +27,36 @@
     <input
       type="file"
       (input)="getFile($event)"
-      [accept]="'.txt'"
+      [accept]="'.txt,.png'"
       id="drop"
       #fileUpload
     />
     <h3 class="upl__head">Upload your file</h3>
-    <img class="upl__icon" src="../../assets/upload.png" alt="Upload" />
+    <img
+      class="upl__icon"
+      src="../../assets/text.png"
+      alt="Text File"
+      [hidden]="!textFile"
+    />
+    <img
+      class="upl__icon"
+      src="../../assets/png.png"
+      alt="PNG File"
+      [hidden]="!pngFile"
+    />
+    <img
+      class="upl__icon"
+      src="../../assets/upload.png"
+      alt="Upload"
+      [hidden]="fileName"
+    />
     <span class="upl__text" [hidden]="fileName">
       Drag & Drop or
       <label class="upl__text__link">
         <input
           type="file"
           (input)="getFile($event)"
-          [accept]="'.txt'"
+          [accept]="'.txt,.png'"
           #fileUpload
           id="link"
         />
@@ -55,7 +72,7 @@
       <button class="upl__file__btn" (click)="removeFile()">Remove File</button>
     </div>
     <span for="fileDropRef" class="upl__subtext" [hidden]="fileName">
-      TXT or FOLDER
+      TXT, PNG
     </span>
   </article>
 </header>

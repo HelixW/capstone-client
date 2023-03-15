@@ -33,6 +33,9 @@ export class DashboardComponent {
   private file: File | undefined;
   fileName = '';
   fileDrag: boolean = false;
+  fileType = '';
+  textFile = false;
+  pngFile = false;
 
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
@@ -41,13 +44,25 @@ export class DashboardComponent {
     if (this.fileInput) this.fileInput.nativeElement.value = '';
     this.file = undefined;
     this.fileName = '';
-    console.log(this.file);
+    this.fileType = '';
+    this.textFile = false;
+    this.pngFile = false;
   }
 
   getFile(event: any) {
     this.file = event.target.files[0];
-    if (this.file) this.fileName = this.file.name;
+
+    if (this.file) {
+      this.fileName = this.file.name;
+      this.fileType = this.file.type;
+    }
+
     this.fileDrag = false;
+
+    console.log(this.fileType);
+    // Set file type
+    if (this.fileType === 'text/plain') this.textFile = true;
+    else if (this.fileType === 'image/png') this.pngFile = true;
   }
 
   onDragOver() {
