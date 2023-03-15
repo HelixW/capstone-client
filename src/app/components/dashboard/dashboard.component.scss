@@ -33,6 +33,18 @@
 .upl {
   @apply relative bg-white mx-4 py-4 rounded-lg flex flex-col justify-center items-center border-2 border-dashed border-gray-500 lg:w-3/4 lg:mx-auto lg:shadow-lg lg:mt-8 lg:py-12;
 
+  &__h1 {
+    @apply font-bold text-2xl text-green-500 mb-3;
+  }
+
+  &__h3 {
+    @apply font-bold text-lg;
+  }
+
+  &__btn {
+    @apply mt-4 bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
+  }
+
   &__head {
     @apply uppercase font-bold lg:text-2xl;
   }

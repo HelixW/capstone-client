@@ -42,6 +42,9 @@ export class DashboardComponent {
   textFile = false;
   pngFile = false;
 
+  successUpload = false;
+  successHash = '';
+
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
 
@@ -82,12 +85,17 @@ export class DashboardComponent {
     if (!this.file) return;
 
     formData.append('file', this.file);
-    console.log(formData);
+
     // Upload file to server
     this.ipfs.uploadFile(data, formData).subscribe({
       next: () => console.log('File Uploaded.'),
       error: (err) => console.log(err.error),
     });
+  }
+
+  restart() {
+    this.successHash = '';
+    this.successUpload = false;
   }
 
   logout() {
