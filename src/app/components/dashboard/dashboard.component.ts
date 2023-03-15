@@ -88,7 +88,10 @@ export class DashboardComponent {
 
     // Upload file to server
     this.ipfs.uploadFile(data, formData).subscribe({
-      next: () => console.log('File Uploaded.'),
+      next: (res: any) => {
+        this.successHash = res.hash;
+        this.successUpload = true;
+      },
       error: (err) => console.log(err.error),
     });
   }
