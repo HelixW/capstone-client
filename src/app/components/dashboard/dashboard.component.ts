@@ -92,6 +92,7 @@ export class DashboardComponent {
     // Upload file to server
     this.ipfs.uploadFile(data, formData).subscribe({
       next: (res: any) => {
+        this.uploadComplete = true;
         this.successHash = res.hash;
         this.successUpload = true;
         this.uploadMessage = 'File successfully uploaded to the network!';
@@ -99,6 +100,7 @@ export class DashboardComponent {
       error: (err) => {
         {
           console.log(err.error);
+          this.uploadComplete = true;
           this.failureUpload = true;
           this.uploadMessage = 'Identical file already exists in network!';
         }
