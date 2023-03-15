@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { IpfsService } from 'src/app/services/ipfs.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  constructor(private user: UserService, private router: Router) {}
+  constructor(
+    private user: UserService,
+    private ipfs: IpfsService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const bearerToken = localStorage.getItem('tk');
@@ -73,8 +78,16 @@ export class DashboardComponent {
   }
 
   onSubmit(data: any) {
-    data.file = this.file;
-    console.log(data);
+    const formData = new FormData();
+    if (!this.file) return;
+
+    formData.append('file', this.file);
+    console.log(formData);
+    // Upload file to server
+    this.ipfs.uploadFile(data, formData).subscribe({
+      next: () => console.log('File Uploaded.'),
+      error: (err) => console.log(err.error),
+    });
   }
 
   logout() {
