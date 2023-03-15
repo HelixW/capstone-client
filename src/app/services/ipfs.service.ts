@@ -15,20 +15,8 @@ export class IpfsService {
     var header = {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
-        .set('AccessLevel', data.access),
+        .set('alevel', data.access),
     };
     return this.http.post(`${this.url}/ipfs/upload`, formData, header);
   }
-
-  // saveUser(data: any) {
-  //   return this.http.post(`${this.url}/identity/register`, data);
-  // }
-
-  // loginUser(data: any) {
-  //   return this.http.post(`${this.url}/identity/login`, data);
-  // }
-
-  // validateUser(header: any) {
-  //   return this.http.get(`${this.url}/identity/validate`, header);
-  // }
 }
