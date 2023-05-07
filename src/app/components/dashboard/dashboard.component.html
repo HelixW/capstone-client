@@ -26,7 +26,9 @@
       required
     />
     <button class="header__search__btn" type="submit">Search</button>
-    <button class="header__search__btn" type="button">Browse</button>
+    <button class="header__search__btn" type="button" [routerLink]="'/browse'">
+      Browse
+    </button>
   </form>
 
   <div [hidden]="!fetchComplete || !successFetch">
