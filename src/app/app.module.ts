@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowseComponent } from './components/browse/browse.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'app', component: DashboardComponent },
   { path: 'browse', component: BrowseComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '**', redirectTo: '' },
 ];
 
@@ -28,6 +30,7 @@ const routes: Routes = [
     RegisterComponent,
     DashboardComponent,
     BrowseComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
