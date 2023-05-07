@@ -1,9 +1,9 @@
 <nav class="navbar">
   <img class="navbar__logo" src="../../assets/logo.png" alt="Logo" />
   <button
-    [routerLink]="'/'"
     class="navbar__btn"
     type="button"
+    [routerLink]="'/'"
     (click)="logout()"
   >
     Logout
@@ -13,16 +13,16 @@
 <header class="header">
   <form
     class="header__search"
-    ngNativeValidate
     #fetchForm="ngForm"
     (submit)="onFetch(fetchForm.value)"
+    ngNativeValidate
   >
     <input
-      type="text"
       class="header__search__bar"
+      type="text"
       placeholder="Enter hash of file or folder"
-      ngModel
       name="hash"
+      ngModel
       required
     />
     <button class="header__search__btn" type="submit">Search</button>
@@ -73,17 +73,17 @@
     <form
       class="upl"
       [ngClass]="{ 'opacity-50': fileDrag }"
+      #fileUploadForm="ngForm"
       (dragenter)="onDragOver()"
       (dragleave)="onDragLeave()"
-      ngNativeValidate
-      #fileUploadForm="ngForm"
       (submit)="onSubmit(fileUploadForm.value)"
+      ngNativeValidate
     >
       <input
         type="file"
+        id="drop"
         (input)="getFile($event)"
         [accept]="'.txt,.png'"
-        id="drop"
         [hidden]="fileName"
         #fileUpload
       />
