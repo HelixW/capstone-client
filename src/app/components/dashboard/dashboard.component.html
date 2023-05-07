@@ -26,6 +26,7 @@
       required
     />
     <button class="header__search__btn" type="submit">Search</button>
+    <button class="header__search__btn" type="button">Browse</button>
   </form>
 
   <div [hidden]="!fetchComplete || !successFetch">
@@ -153,12 +154,17 @@
 
 <footer class="f">
   <article class="f__text">
-    <span class="f__text__head">Browse:</span> To look for a file or folder,
+    <span class="f__text__head">Search</span> To look for a file or folder,
     enter a hash in the search bar.
   </article>
   <div class="f__vl"></div>
   <article class="f__text">
-    <span class="f__text__head">Upload:</span> To upload a new file to the IPFS,
+    <span class="f__text__head">Browse</span> Browse from available files on
+    your organisation's IPFS network.
+  </article>
+  <div class="f__vl"></div>
+  <article class="f__text">
+    <span class="f__text__head">Upload</span> To upload a new file to the IPFS,
     drag and drop a file or folder into the upload section above.
   </article>
   <button [routerLink]="'/'" class="f__btn">Logout</button>

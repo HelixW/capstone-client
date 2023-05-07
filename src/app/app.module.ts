@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowseComponent } from './components/browse/browse.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    BrowseComponent,
   ],
   imports: [
     BrowserModule,
