@@ -59,6 +59,10 @@
     &--hide {
       @apply hidden lg:inline-block;
     }
+
+    &--hash {
+      @apply cursor-pointer hover:underline;
+    }
   }
 
   &__download {

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "ngx-toastr/toastr";
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 html,

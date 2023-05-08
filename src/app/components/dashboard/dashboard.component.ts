@@ -22,7 +22,7 @@ export class DashboardComponent {
 
     // Check validity of token
     if (bearerToken) {
-      var header = {
+      const header = {
         headers: new HttpHeaders().set(
           'Authorization',
           `Bearer ${bearerToken}`

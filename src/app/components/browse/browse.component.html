@@ -23,33 +23,29 @@
   <article class="label">
     <span class="label__type">Name</span>
     <span class="label__type label__type--hide">File Type</span>
-    <span class="label__type label__type--hide">Size</span>
-    <span class="label__type label__type--hide">Last Modified</span>
+    <span class="label__type label__type--hide">Size (bytes)</span>
+    <span class="label__type label__type--hide">Hash (Click to Copy)</span>
   </article>
-  <article class="file">
-    <span class="file__meta">ABCD</span>
-    <span class="file__meta file__meta--type file__meta--hide">txt</span>
-    <span class="file__meta file__meta--hide">3 Kb</span>
-    <span class="file__meta file__meta--hide">3/12/1239</span>
-    <button class="file__download">
-      <img
-        class="file__download__icon"
-        src="../../../assets/download.png"
-        alt="Download File"
-      />
-    </button>
-  </article>
-  <article class="file">
-    <span class="file__meta">ABCD</span>
-    <span class="file__meta file__meta--type file__meta--hide">txt</span>
-    <span class="file__meta file__meta--hide">3 Kb</span>
-    <span class="file__meta file__meta--hide">3/12/1239</span>
-    <button class="file__download">
-      <img
-        class="file__download__icon"
-        src="../../../assets/download.png"
-        alt="Download File"
-      />
-    </button>
-  </article>
+  <ul>
+    <li class="file" *ngFor="let file of uploads; let i = index">
+      <span class="file__meta">{{ file.name }}</span>
+      <span class="file__meta file__meta--type file__meta--hide">{{
+        file.fileType
+      }}</span>
+      <span class="file__meta file__meta--hide">{{ file.size }}</span>
+      <span
+        class="file__meta file__meta--hide file__meta--hash"
+        (click)="copyToClipboard(i)"
+      >
+        {{ file.hash.slice(0, 15) + "..." }}
+      </span>
+      <button class="file__download">
+        <img
+          class="file__download__icon"
+          src="../../../assets/download.png"
+          alt="Download File"
+        />
+      </button>
+    </li>
+  </ul>
 </section>

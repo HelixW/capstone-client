@@ -12,7 +12,7 @@ export class IpfsService {
   uploadFile(data: any, formData: FormData) {
     const bearerToken = localStorage.getItem('tk');
 
-    var header = {
+    const header = {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
         .append('alevel', data.access),
@@ -23,7 +23,7 @@ export class IpfsService {
   fetchFile(data: any) {
     const bearerToken = localStorage.getItem('tk');
 
-    var header = {
+    const header = {
       headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`),
     };
 
