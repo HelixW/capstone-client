@@ -59,6 +59,10 @@
 
   &__btn {
     @apply mt-4 bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
+
+    &--confirm {
+      @apply w-24 mt-4 bg-black border-2 border-black text-white mx-2 p-2 rounded-lg hover:bg-white hover:text-black transition duration-200;
+    }
   }
 
   &__head {
