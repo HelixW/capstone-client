@@ -39,7 +39,11 @@
       >
         {{ file.hash.slice(0, 15) + "..." }}
       </span>
-      <button class="file__download">
+      <button
+        class="file__download"
+        type="button"
+        (click)="onDownload(file.hash)"
+      >
         <img
           class="file__download__icon"
           src="../../../assets/download.png"

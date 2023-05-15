@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { FilesService } from 'src/app/services/files.service';
 import { ToastrService } from 'ngx-toastr';
+import { IpfsService } from 'src/app/services/ipfs.service';
 
 @Component({
   selector: 'app-browse',
@@ -15,7 +16,8 @@ export class BrowseComponent {
     private user: UserService,
     private router: Router,
     private files: FilesService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private ipfs: IpfsService
   ) {}
 
   uploads: Array<any> = [];
@@ -55,5 +57,27 @@ export class BrowseComponent {
     await navigator.clipboard.writeText(this.uploads[index].hash);
     this.toastr.success('Copied hash to clipboard.');
     console.log('Hash copied.');
+  }
+
+  async onDownload(hash: string) {
+    this.ipfs.downloadFile(hash).subscribe({
+      next: (res: any) => {
+        this.toastr.success('Starting download...');
+
+        // Download file to system
+        let fName = res.headers
+          .get('Content-Disposition')
+          ?.split(';')[1]
+          .split('=')[1];
+        let blob: Blob = res.body as Blob;
+        let a = document.createElement('a');
+        a.download = fName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      },
+      error: (err) => {
+        console.log(err.error);
+      },
+    });
   }
 }
