@@ -162,7 +162,7 @@ export class DashboardComponent {
         let a = document.createElement('a');
         a.download = fName;
         a.href = window.URL.createObjectURL(blob);
-        a.click;
+        a.click();
       },
       error: (err) => {
         this.restart();
