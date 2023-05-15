@@ -161,7 +161,6 @@ export class DashboardComponent {
         let blob: Blob = res.body as Blob;
         let a = document.createElement('a');
         a.download = fName;
-        console.log(res.headers);
         a.href = window.URL.createObjectURL(blob);
         a.click();
       },
