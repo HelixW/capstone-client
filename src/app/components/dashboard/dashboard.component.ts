@@ -49,13 +49,12 @@ export class DashboardComponent {
   successHash = '';
   uploadMessage = '';
 
-  // TODO
-  fetchComplete = true;
-  successFetch = true;
+  fetchComplete = false;
+  successFetch = false;
   failureFetch = false;
-  fetchMessage = 'Your file with the given hash was found.';
-  fetchName = 'file.txt';
-  fetchSize = '45Kb';
+  fetchMessage = '';
+  fetchName = '';
+  fetchSize = '';
 
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
