@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IpfsService } from 'src/app/services/ipfs.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,7 +15,8 @@ export class DashboardComponent {
   constructor(
     private user: UserService,
     private ipfs: IpfsService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -142,6 +144,10 @@ export class DashboardComponent {
         console.log(err.error);
       },
     });
+  }
+
+  onDownload() {
+    this.toastr.success('Starting download...');
   }
 
   restart() {
