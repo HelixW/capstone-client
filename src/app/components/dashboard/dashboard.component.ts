@@ -49,11 +49,13 @@ export class DashboardComponent {
   successHash = '';
   uploadMessage = '';
 
-  fetchComplete = false;
-  successFetch = false;
+  // TODO
+  fetchComplete = true;
+  successFetch = true;
   failureFetch = false;
-  fetchMessage = '';
-  fetchContent = '';
+  fetchMessage = 'Your file with the given hash was found.';
+  fetchName = 'file.txt';
+  fetchSize = '45Kb';
 
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
@@ -120,8 +122,9 @@ export class DashboardComponent {
       next: (res: any) => {
         this.fetchComplete = true;
         this.successFetch = true;
-        this.fetchMessage = 'Your file has been fetched successfully.';
-        this.fetchContent = res.data;
+        this.fetchMessage = 'Your file with the given hash was found.';
+        this.fetchName = res.name;
+        this.fetchSize = res.size;
       },
       error: (err) => {
         this.fetchComplete = true;
@@ -143,7 +146,8 @@ export class DashboardComponent {
     this.successFetch = false;
     this.failureFetch = false;
     this.fetchMessage = '';
-    this.fetchContent = '';
+    this.fetchName = '';
+    this.fetchSize = '';
   }
 
   logout() {

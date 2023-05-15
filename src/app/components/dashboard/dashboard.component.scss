@@ -45,8 +45,16 @@
     @apply font-bold text-lg;
   }
 
-  &__cont {
-    @apply bg-gray-100 w-96 p-4 rounded-lg;
+  &__file {
+    @apply flex justify-center items-center;
+
+    &__icon {
+      @apply w-16 my-3 lg:w-24 mr-4;
+    }
+
+    &__h3 {
+      @apply font-bold text-lg;
+    }
   }
 
   &__btn {

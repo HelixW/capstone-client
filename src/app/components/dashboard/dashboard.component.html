@@ -31,20 +31,38 @@
     </button>
   </form>
 
-  <div [hidden]="!fetchComplete || !successFetch">
-    <div class="upl">
+  <section [hidden]="!fetchComplete || !successFetch">
+    <article class="upl">
       <h1 class="upl__h1">
         {{ fetchMessage }}
       </h1>
-      <h3 class="upl__h3">File Contents</h3>
-      <div class="upl__cont">
-        {{ fetchContent }}
+      <div class="upl__file">
+        <img
+          class="upl__file__icon"
+          src="../../assets/text.png"
+          alt="Text File"
+        />
+        <div>
+          <div class="upl__file__h3">
+            {{ fetchName }}
+          </div>
+          <div class="upl__file__h4">
+            {{ fetchSize }}
+          </div>
+        </div>
       </div>
-      <button class="upl__btn" type="button" (click)="restart()">Clear</button>
-    </div>
-  </div>
+      <div>
+        <button class="upl__btn" type="button" (click)="restart()">
+          Download
+        </button>
+        <button class="upl__btn" type="button" (click)="restart()">
+          Clear
+        </button>
+      </div>
+    </article>
+  </section>
 
-  <div [hidden]="!fetchComplete || !failureFetch">
+  <section [hidden]="!fetchComplete || !failureFetch">
     <div class="upl">
       <h1 class="upl__h1--fail">
         {{ fetchMessage }}
@@ -55,24 +73,24 @@
       </h3>
       <button class="upl__btn" type="button" (click)="restart()">Clear</button>
     </div>
-  </div>
+  </section>
 
-  <div [hidden]="!uploadComplete || !successUpload">
+  <section [hidden]="!uploadComplete || !successUpload">
     <div class="upl">
       <h1 class="upl__h1">{{ uploadMessage }}</h1>
       <h3 class="upl__h3">Your file has the hash: {{ successHash }}</h3>
       <button class="upl__btn" type="button" (click)="restart()">Clear</button>
     </div>
-  </div>
+  </section>
 
-  <div [hidden]="!uploadComplete || !failureUpload">
+  <section [hidden]="!uploadComplete || !failureUpload">
     <div class="upl">
       <h1 class="upl__h1--fail">{{ uploadMessage }}</h1>
       <button class="upl__btn" type="button" (click)="restart()">Clear</button>
     </div>
-  </div>
+  </section>
 
-  <div [hidden]="uploadComplete || fetchComplete">
+  <section [hidden]="uploadComplete || fetchComplete">
     <form
       class="upl"
       [ngClass]="{ 'opacity-50': fileDrag }"
@@ -151,7 +169,7 @@
         TXT, PNG
       </span>
     </form>
-  </div>
+  </section>
 </header>
 
 <footer class="f">
