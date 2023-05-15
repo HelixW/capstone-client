@@ -117,7 +117,7 @@ export class DashboardComponent {
         this.successHash = res.hash;
         this.successUpload = true;
 
-        if ((res.version = true))
+        if (res.version === true)
           this.uploadMessage =
             'A new version of your file has been uploaded to the network!';
         else this.uploadMessage = 'File successfully uploaded to the network!';
