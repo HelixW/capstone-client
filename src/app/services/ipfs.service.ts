@@ -29,4 +29,13 @@ export class IpfsService {
 
     return this.http.post(`${this.url}/ipfs/fetch`, data, header);
   }
+
+  downloadFile(hash: string) {
+    const bearerToken = localStorage.getItem('tk');
+    const header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`),
+    };
+
+    return this.http.get(`${this.url}/ipfs/download/${hash}`, header);
+  }
 }

@@ -112,6 +112,7 @@ export class DashboardComponent {
     // Upload file to server
     this.ipfs.uploadFile(data, formData).subscribe({
       next: (res: any) => {
+        this.restart();
         this.uploadComplete = true;
         this.successHash = res.hash;
         this.successUpload = true;
@@ -119,6 +120,7 @@ export class DashboardComponent {
       },
       error: (err) => {
         {
+          this.restart();
           console.log(err.error);
           this.uploadComplete = true;
           this.failureUpload = true;
@@ -131,6 +133,7 @@ export class DashboardComponent {
   onFetch(data: NgForm) {
     this.ipfs.fetchFile(data).subscribe({
       next: (res: any) => {
+        this.restart();
         this.fetchComplete = true;
         this.successFetch = true;
         this.fetchMessage = 'Your file with the given hash was found.';
@@ -138,6 +141,7 @@ export class DashboardComponent {
         this.fetchSize = this.humanFileSize(res.size);
       },
       error: (err) => {
+        this.restart();
         this.fetchComplete = true;
         this.failureFetch = true;
         this.fetchMessage = 'Your file could not be fetched.';
@@ -147,7 +151,29 @@ export class DashboardComponent {
   }
 
   onDownload() {
-    this.toastr.success('Starting download...');
+    this.ipfs.downloadFile('').subscribe({
+      next: (res: any) => {
+        this.toastr.success('Starting download...');
+
+        // Download file to system
+        let fName = res.headers
+          .get('content-disposition')
+          ?.split(';')[1]
+          .split('=')[1];
+        let blob: Blob = res.body as Blob;
+        let a = document.createElement('a');
+        a.download = fName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click;
+      },
+      error: (err) => {
+        this.restart();
+        this.fetchComplete = true;
+        this.failureFetch = true;
+        this.fetchMessage = 'Your file could not be downloaded.';
+        console.log(err.error);
+      },
+    });
   }
 
   restart() {
