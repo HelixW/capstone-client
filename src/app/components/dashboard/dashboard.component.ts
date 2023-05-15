@@ -138,6 +138,10 @@ export class DashboardComponent {
         this.fetchName = res.name;
         this.fetchSize = this.humanFileSize(res.size);
         this.fetchHash = res.hash;
+
+        if (this.fetchName.split('.')[1].toLowerCase() === 'txt')
+          this.textFile = true;
+        else this.zipFile = true;
       },
       error: (err) => {
         this.fetchComplete = true;
@@ -175,6 +179,11 @@ export class DashboardComponent {
   }
 
   restart() {
+    this.fileName = '';
+    this.fileType = '';
+    this.textFile = false;
+    this.zipFile = false;
+
     this.uploadComplete = false;
     this.successUpload = false;
     this.failureUpload = false;

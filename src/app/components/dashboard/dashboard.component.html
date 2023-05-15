@@ -38,9 +38,16 @@
       </h1>
       <div class="upl__fetch">
         <img
-          class="upl__fetch__icon"
+          class="upl__icon"
           src="../../assets/text.png"
           alt="Text File"
+          [hidden]="!textFile"
+        />
+        <img
+          class="upl__icon"
+          src="../../assets/zip.png"
+          alt="ZIP File"
+          [hidden]="!zipFile"
         />
         <div>
           <div class="upl__fetch__h3">
