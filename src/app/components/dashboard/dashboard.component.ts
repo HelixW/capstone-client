@@ -68,6 +68,16 @@ export class DashboardComponent {
     this.pngFile = false;
   }
 
+  humanFileSize(bytes: number) {
+    if (bytes == 0) {
+      return '0.00 B';
+    }
+    var e = Math.floor(Math.log(bytes) / Math.log(1024));
+    return (
+      (bytes / Math.pow(1024, e)).toFixed(2) + ' ' + ' KMGTP'.charAt(e) + 'B'
+    );
+  }
+
   getFile(event: any) {
     this.file = event.target.files[0];
 
@@ -123,7 +133,7 @@ export class DashboardComponent {
         this.successFetch = true;
         this.fetchMessage = 'Your file with the given hash was found.';
         this.fetchName = res.name;
-        this.fetchSize = res.size;
+        this.fetchSize = this.humanFileSize(res.size);
       },
       error: (err) => {
         this.fetchComplete = true;
