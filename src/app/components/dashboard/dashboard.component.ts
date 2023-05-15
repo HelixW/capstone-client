@@ -57,6 +57,7 @@ export class DashboardComponent {
   fetchMessage = '';
   fetchName = '';
   fetchSize = '';
+  fetchHash = '';
 
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
@@ -112,7 +113,6 @@ export class DashboardComponent {
     // Upload file to server
     this.ipfs.uploadFile(data, formData).subscribe({
       next: (res: any) => {
-        this.restart();
         this.uploadComplete = true;
         this.successHash = res.hash;
         this.successUpload = true;
@@ -120,7 +120,6 @@ export class DashboardComponent {
       },
       error: (err) => {
         {
-          this.restart();
           console.log(err.error);
           this.uploadComplete = true;
           this.failureUpload = true;
@@ -133,7 +132,6 @@ export class DashboardComponent {
   onFetch(data: NgForm) {
     this.ipfs.fetchFile(data).subscribe({
       next: (res: any) => {
-        this.restart();
         this.fetchComplete = true;
         this.successFetch = true;
         this.fetchMessage = 'Your file with the given hash was found.';
@@ -141,7 +139,6 @@ export class DashboardComponent {
         this.fetchSize = this.humanFileSize(res.size);
       },
       error: (err) => {
-        this.restart();
         this.fetchComplete = true;
         this.failureFetch = true;
         this.fetchMessage = 'Your file could not be fetched.';
@@ -151,7 +148,7 @@ export class DashboardComponent {
   }
 
   onDownload() {
-    this.ipfs.downloadFile('').subscribe({
+    this.ipfs.downloadFile(this.fetchHash).subscribe({
       next: (res: any) => {
         this.toastr.success('Starting download...');
 
@@ -189,6 +186,7 @@ export class DashboardComponent {
     this.fetchMessage = '';
     this.fetchName = '';
     this.fetchSize = '';
+    this.fetchHash = '';
   }
 
   logout() {
