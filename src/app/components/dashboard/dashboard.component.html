@@ -36,17 +36,17 @@
       <h1 class="upl__h1">
         {{ fetchMessage }}
       </h1>
-      <div class="upl__file">
+      <div class="upl__fetch">
         <img
-          class="upl__file__icon"
+          class="upl__fetch__icon"
           src="../../assets/text.png"
           alt="Text File"
         />
         <div>
-          <div class="upl__file__h3">
+          <div class="upl__fetch__h3">
             {{ fetchName }}
           </div>
-          <div class="upl__file__h4">
+          <div class="upl__fetch__h4">
             {{ fetchSize }}
           </div>
         </div>
@@ -143,7 +143,7 @@
       </span>
       <div [hidden]="!fileName" class="upl__file">
         <div class="upl__file__name">
-          {{ fileName || "No file uploaded yet" }}
+          {{ fileName || "No file uploaded yet." }}
         </div>
         <div class="upl__file__btngrp">
           <button
