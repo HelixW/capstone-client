@@ -137,6 +137,7 @@ export class DashboardComponent {
         this.fetchMessage = 'Your file with the given hash was found.';
         this.fetchName = res.name;
         this.fetchSize = this.humanFileSize(res.size);
+        this.fetchHash = res.hash;
       },
       error: (err) => {
         this.fetchComplete = true;
