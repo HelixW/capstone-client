@@ -104,7 +104,7 @@
         type="file"
         id="drop"
         (input)="getFile($event)"
-        [accept]="'.txt,.png'"
+        [accept]="'.txt,.zip'"
         [hidden]="fileName"
         #fileUpload
       />
@@ -117,9 +117,9 @@
       />
       <img
         class="upl__icon"
-        src="../../assets/png.png"
-        alt="PNG File"
-        [hidden]="!pngFile"
+        src="../../assets/zip.png"
+        alt="ZIP File"
+        [hidden]="!zipFile"
       />
       <img
         class="upl__icon"
@@ -166,7 +166,7 @@
         </div>
       </div>
       <span for="fileDropRef" class="upl__subtext" [hidden]="fileName">
-        TXT, PNG
+        TXT, ZIP
       </span>
     </form>
   </section>

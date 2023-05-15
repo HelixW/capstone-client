@@ -43,7 +43,7 @@ export class DashboardComponent {
   fileDrag: boolean = false;
   fileType = '';
   textFile = false;
-  pngFile = false;
+  zipFile = false;
 
   uploadComplete = false;
   successUpload = false;
@@ -68,7 +68,7 @@ export class DashboardComponent {
     this.fileName = '';
     this.fileType = '';
     this.textFile = false;
-    this.pngFile = false;
+    this.zipFile = false;
   }
 
   humanFileSize(bytes: number) {
@@ -93,7 +93,7 @@ export class DashboardComponent {
 
     // Set file type
     if (this.fileType === 'text/plain') this.textFile = true;
-    else if (this.fileType === 'image/png') this.pngFile = true;
+    else if (this.fileType === 'application/zip') this.zipFile = true;
   }
 
   onDragOver() {
