@@ -23,7 +23,7 @@
   <article class="label">
     <span class="label__type">Name</span>
     <span class="label__type label__type--hide">File Type</span>
-    <span class="label__type label__type--hide">Size (bytes)</span>
+    <span class="label__type label__type--hide">Size</span>
     <span class="label__type label__type--hide">Hash (Click to Copy)</span>
   </article>
   <ul>
@@ -32,7 +32,9 @@
       <span class="file__meta file__meta--type file__meta--hide">{{
         file.fileType
       }}</span>
-      <span class="file__meta file__meta--hide">{{ file.size }}</span>
+      <span class="file__meta file__meta--hide">{{
+        humanFileSize(file.size)
+      }}</span>
       <span
         class="file__meta file__meta--hide file__meta--hash"
         (click)="copyToClipboard(i)"
