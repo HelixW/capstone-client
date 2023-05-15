@@ -32,10 +32,11 @@ export class IpfsService {
 
   downloadFile(hash: string) {
     const bearerToken = localStorage.getItem('tk');
-    const header = {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`),
-    };
 
-    return this.http.get(`${this.url}/ipfs/download/${hash}`, header);
+    return this.http.get(`${this.url}/ipfs/download/${hash}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`),
+      observe: 'response',
+      responseType: 'blob',
+    });
   }
 }
