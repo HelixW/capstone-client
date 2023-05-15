@@ -59,6 +59,9 @@ export class DashboardComponent {
   fetchSize = '';
   fetchHash = '';
 
+  version = false;
+  allVersions = [];
+
   @ViewChild('fileUpload', { static: false })
   fileInput: ElementRef | undefined;
 
@@ -138,7 +141,8 @@ export class DashboardComponent {
       next: (res: any) => {
         this.fetchComplete = true;
         this.successFetch = true;
-        this.fetchMessage = 'Your file with the given hash was found.';
+        this.fetchMessage =
+          'Your file with the given hash was found. Download the latest version below.';
         this.fetchName = res.name;
         this.fetchSize = this.humanFileSize(res.size);
         this.fetchHash = res.hash;
@@ -146,11 +150,43 @@ export class DashboardComponent {
         if (this.fetchName.split('.')[1].toLowerCase() === 'txt')
           this.textFile = true;
         else this.zipFile = true;
+
+        // Show versions
+        if (res.version) {
+          this.version = true;
+          this.allVersions = res.allVersions;
+        }
       },
       error: (err) => {
         this.fetchComplete = true;
         this.failureFetch = true;
         this.fetchMessage = 'Your file could not be fetched.';
+        console.log(err.error);
+      },
+    });
+  }
+
+  onDownloadVersion(hash: string) {
+    this.ipfs.downloadFile(hash).subscribe({
+      next: (res: any) => {
+        this.toastr.success('Starting download...');
+
+        // Download file to system
+        let fName = res.headers
+          .get('Content-Disposition')
+          ?.split(';')[1]
+          .split('=')[1];
+        let blob: Blob = res.body as Blob;
+        let a = document.createElement('a');
+        a.download = fName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      },
+      error: (err) => {
+        this.restart();
+        this.fetchComplete = true;
+        this.failureFetch = true;
+        this.fetchMessage = 'Your file could not be downloaded.';
         console.log(err.error);
       },
     });
@@ -201,6 +237,9 @@ export class DashboardComponent {
     this.fetchName = '';
     this.fetchSize = '';
     this.fetchHash = '';
+
+    this.version = false;
+    this.allVersions = [];
   }
 
   logout() {

@@ -82,6 +82,22 @@
     </div>
   </section>
 
+  <section [hidden]="!fetchComplete || !version">
+    <div class="upl">
+      <h1 class="upl__h1--ver">Versions (Click to Download)</h1>
+      <ul>
+        <li *ngFor="let hash of allVersions; let i = index">
+          <h3 class="upl__hash">
+            {{ allVersions.length - i }} :
+            <span class="upl__hash__click" (click)="onDownloadVersion(hash)">{{
+              hash
+            }}</span>
+          </h3>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section [hidden]="!uploadComplete || !successUpload">
     <div class="upl">
       <h1 class="upl__h1">{{ uploadMessage }}</h1>
