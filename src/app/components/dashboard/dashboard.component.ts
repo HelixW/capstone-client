@@ -155,13 +155,17 @@ export class DashboardComponent {
 
         // Download file to system
         let fName = res.headers
-          .get('content-disposition')
+          .get('Content-Disposition')
           ?.split(';')[1]
           .split('=')[1];
         let blob: Blob = res.body as Blob;
         let a = document.createElement('a');
         a.download = fName;
-        console.log(fName);
+        console.log(
+          res.headers.get('Content-Disposition')?.split(';')[1].split('=')[1]
+        );
+        console.log(res.headers.get('Content-Disposition')?.split(';')[1]);
+        console.log(res.headers.get('Content-Disposition'));
         a.href = window.URL.createObjectURL(blob);
         a.click();
       },
