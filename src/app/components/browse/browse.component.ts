@@ -41,7 +41,7 @@ export class BrowseComponent {
 
       this.files.viewFiles().subscribe({
         next: (res: any) => {
-          this.uploads = res.files;
+          this.uploads = res.files.filter((item: any) => item.access == 2);
         },
         error: () => console.log('Error fetching files'),
       });

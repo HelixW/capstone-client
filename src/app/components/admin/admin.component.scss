@@ -23,7 +23,7 @@
     &__head {
       @apply font-bold text-2xl;
 
-      &--user {
+      &--admin {
         @apply opacity-50 cursor-pointer hover:underline;
       }
     }
@@ -58,6 +58,10 @@
 
     &--hide {
       @apply hidden lg:inline-block;
+    }
+
+    &--hash {
+      @apply cursor-pointer hover:underline;
     }
   }
 
