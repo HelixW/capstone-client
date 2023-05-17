@@ -23,7 +23,7 @@
     &__head {
       @apply font-bold text-2xl;
 
-      &--admin {
+      &--user {
         @apply opacity-50 cursor-pointer hover:underline;
       }
     }

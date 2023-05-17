@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <img class="navbar__logo" src="../../assets/logo.png" alt="Logo" />
+
+  <div class="navbar__right">
+    <span class="navbar__right__link" [routerLink]="'/browse'"> Browse </span>
+    <button class="navbar__right__btn" type="button" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</nav>
+
+<section class="lgn">
+  <form class="lgn__card" #twoFactorForm="ngForm" (submit)="validate()">
+    <div class="lgn__card__head">Unlock Admin Access</div>
+    <div class="lgn__card__msg" [hidden]="!invalid">
+      Invalid token provided.
+    </div>
+    <ng-otp-input
+      [config]="{ length: 6 }"
+      (onInputChange)="receiveOtp($event)"
+    ></ng-otp-input>
+    <button class="lgn__card__btn" type="submit">Login</button>
+    <div class="lgn__card__stext">
+      Don't have 2FA added?
+      <span [routerLink]="'/twofactorsetup'" class="lgn__card__stext--link">
+        Setup
+      </span>
+    </div>
+  </form>
+</section>

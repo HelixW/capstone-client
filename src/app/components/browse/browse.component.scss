@@ -9,8 +9,16 @@
     @apply w-16;
   }
 
-  &__btn {
-    @apply hidden lg:block font-bold rounded-full border-black border-2 px-12 py-2 uppercase hover:bg-black hover:text-white transition duration-200;
+  &__right {
+    @apply flex justify-center flex-row items-center;
+
+    &__link {
+      @apply font-bold text-lg hover:underline cursor-pointer;
+    }
+
+    &__btn {
+      @apply ml-4 hidden lg:block font-bold rounded-full border-black border-2 px-12 py-2 uppercase hover:bg-black hover:text-white transition duration-200;
+    }
   }
 }
 

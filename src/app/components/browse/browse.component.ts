@@ -21,6 +21,7 @@ export class BrowseComponent {
   ) {}
 
   uploads: Array<any> = [];
+  access: boolean = false;
 
   ngOnInit() {
     const bearerToken = localStorage.getItem('tk');
@@ -37,6 +38,11 @@ export class BrowseComponent {
       this.user.validateUser(header).subscribe({
         next: () => console.log('User validated.'),
         error: () => this.router.navigateByUrl(''),
+      });
+
+      this.user.validateAccess(header).subscribe({
+        next: () => (this.access = true),
+        error: () => console.log('User does not have access.'),
       });
 
       this.files.viewFiles().subscribe({

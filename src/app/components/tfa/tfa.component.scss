@@ -1,0 +1,47 @@
+:host {
+  @apply block h-full lg:bg-gray-300 overflow-auto;
+}
+
+.navbar {
+  @apply bg-white flex justify-center lg:justify-between items-center px-8 py-4 lg:px-32 lg:py-6 lg:shadow-lg;
+
+  &__logo {
+    @apply w-16;
+  }
+
+  &__right {
+    @apply flex justify-center flex-row items-center;
+
+    &__link {
+      @apply font-bold text-lg hover:underline cursor-pointer;
+    }
+
+    &__btn {
+      @apply ml-4 hidden lg:block font-bold rounded-full border-black border-2 px-12 py-2 uppercase hover:bg-black hover:text-white transition duration-200;
+    }
+  }
+}
+
+.lgn {
+  &__card {
+    @apply flex flex-col justify-center items-center mt-6 lg:shadow-lg mx-auto lg:w-96 lg:py-12 lg:mt-20 lg:rounded-lg lg:bg-white;
+
+    &__head {
+      @apply text-2xl font-bold mb-6;
+    }
+
+    &__msg {
+      @apply text-red-500 mb-4;
+    }
+
+    &__btn {
+      @apply mb-2 mx-auto w-64 lg:mx-0 lg:w-64 mt-4 font-bold rounded-lg border-black border-2 py-2 uppercase bg-black text-white hover:text-black hover:bg-white transition duration-200 text-xl;
+    }
+
+    &__stext {
+      &--link {
+        @apply text-blue-500 cursor-pointer hover:underline;
+      }
+    }
+  }
+}

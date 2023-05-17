@@ -14,6 +14,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { TfaComponent } from './components/tfa/tfa.component';
+import { NgOtpInputModule } from 'ng-otp-input';
+import { TfasetupComponent } from './components/tfasetup/tfasetup.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +25,8 @@ const routes: Routes = [
   { path: 'app', component: DashboardComponent },
   { path: 'browse', component: BrowseComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'twofactor', component: TfaComponent },
+  { path: 'twofactorsetup', component: TfasetupComponent },
   { path: '**', redirectTo: '' },
 ];
 
@@ -34,6 +39,8 @@ const routes: Routes = [
     DashboardComponent,
     BrowseComponent,
     AdminComponent,
+    TfaComponent,
+    TfasetupComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +50,7 @@ const routes: Routes = [
     FormsModule,
     CommonModule,
     ToastrModule.forRoot(),
+    NgOtpInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

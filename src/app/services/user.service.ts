@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -19,5 +19,27 @@ export class UserService {
 
   validateUser(header: any) {
     return this.http.get(`${this.url}/identity/validate`, header);
+  }
+
+  validateAccess(header: any) {
+    return this.http.get(`${this.url}/identity/access`, header);
+  }
+
+  validateAdmin(header: any) {
+    return this.http.get(`${this.url}/identity/admin`, header);
+  }
+
+  twoFactorQR(header: any) {
+    return this.http.get(`${this.url}/identity/2fa`, header);
+  }
+
+  twoFactorValidate(data: any) {
+    const bearerToken = localStorage.getItem('tk');
+
+    // Check validity of token
+    const header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`),
+    };
+    return this.http.post(`${this.url}/identity/2faverify`, data, header);
   }
 }

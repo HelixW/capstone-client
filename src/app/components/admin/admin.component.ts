@@ -34,9 +34,9 @@ export class AdminComponent {
         ),
       };
 
-      this.user.validateUser(header).subscribe({
+      this.user.validateAdmin(header).subscribe({
         next: () => console.log('User validated.'),
-        error: () => this.router.navigateByUrl(''),
+        error: () => this.router.navigateByUrl('/twofactor'),
       });
 
       this.files.viewFiles().subscribe({

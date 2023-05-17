@@ -1,21 +1,30 @@
 <nav class="navbar">
   <img class="navbar__logo" src="../../assets/logo.png" alt="Logo" />
-  <button
-    class="navbar__btn"
-    type="button"
-    [routerLink]="'/'"
-    (click)="logout()"
-  >
-    Logout
-  </button>
+
+  <div class="navbar__right">
+    <span
+      class="navbar__right__link"
+      [routerLink]="'/twofactor'"
+      [hidden]="!access"
+    >
+      Admin Access
+    </span>
+    <button class="navbar__right__btn" type="button" (click)="logout()">
+      Logout
+    </button>
+  </div>
 </nav>
 
 <section class="browse">
   <article class="browse__header">
     <span class="browse__header__head">
-      User Files |
-      <span class="browse__header__head--admin" [routerLink]="'/admin'">
-        Admin Files
+      User Files
+      <span
+        class="browse__header__head--admin"
+        [routerLink]="'/admin'"
+        [hidden]="!access"
+      >
+        | Admin Files
       </span>
     </span>
     <button class="browse__header__btn" [routerLink]="'/app'">Upload</button>

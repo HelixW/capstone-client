@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <img class="navbar__logo" src="../../assets/logo.png" alt="Logo" />
+
+  <div class="navbar__right">
+    <span class="navbar__right__link" [routerLink]="'/browse'"> Browse </span>
+    <button class="navbar__right__btn" type="button" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</nav>
+
+<section class="lgn">
+  <div class="lgn__card">
+    <div class="lgn__card__head">2FA QR Code</div>
+    <img src="{{ imgSrc }}" alt="QR Code" />
+    <button class="lgn__card__btn" type="button" [routerLink]="'/twofactor'">
+      Continue
+    </button>
+  </div>
+</section>
